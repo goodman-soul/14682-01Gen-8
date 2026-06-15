@@ -1,0 +1,268 @@
+import type { Product } from '@/types';
+
+export const products: Product[] = [
+  {
+    id: 'p-coffee-1',
+    brandId: 'coffee',
+    categoryId: 'coffee-1',
+    name: '意式浓缩',
+    description: '精选阿拉比卡咖啡豆，浓郁醇厚，油脂丰富',
+    price: 22,
+    imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=espresso%20coffee%20in%20a%20small%20white%20cup%20on%20wooden%20table%20with%20coffee%20beans%20dark%20moody%20lighting&image_size=square',
+    isOutOfStock: false,
+    specs: [
+      { name: '杯型', options: ['单份', '双份'], defaultOption: '双份' },
+      { name: '浓度', options: ['标准', '浓郁', '淡一点'], defaultOption: '标准' },
+    ],
+  },
+  {
+    id: 'p-coffee-2',
+    brandId: 'coffee',
+    categoryId: 'coffee-2',
+    name: '香草拿铁',
+    description: '经典意式浓缩搭配丝滑牛奶与香草糖浆，香甜可口',
+    price: 32,
+    originalPrice: 38,
+    imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=vanilla%20latte%20coffee%20in%20tall%20glass%20with%20latte%20art%20heart%20shape%20on%20cozy%20cafe%20background&image_size=square',
+    isOutOfStock: false,
+    specs: [
+      { name: '杯型', options: ['中杯', '大杯'], defaultOption: '大杯' },
+      { name: '温度', options: ['热饮', '冰饮'], defaultOption: '热饮' },
+      { name: '甜度', options: ['全糖', '半糖', '少糖', '无糖'], defaultOption: '半糖' },
+    ],
+  },
+  {
+    id: 'p-coffee-3',
+    brandId: 'coffee',
+    categoryId: 'coffee-2',
+    name: '榛果拿铁',
+    description: '榛果的坚果香气与咖啡完美融合，口感丰富',
+    price: 35,
+    imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=hazelnut%20latte%20coffee%20with%20hazelnuts%20and%20cinnamon%20sticks%20warm%20cozy%20atmosphere&image_size=square',
+    isOutOfStock: true,
+    specs: [
+      { name: '杯型', options: ['中杯', '大杯'], defaultOption: '大杯' },
+      { name: '温度', options: ['热饮', '冰饮'], defaultOption: '热饮' },
+    ],
+  },
+  {
+    id: 'p-coffee-4',
+    brandId: 'coffee',
+    categoryId: 'coffee-3',
+    name: '经典卡布奇诺',
+    description: '1:1:1完美比例，浓郁奶泡，意式经典',
+    price: 30,
+    imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=cappuccino%20coffee%20with%20thick%20milk%20foam%20and%20cocoa%20powder%20in%20ceramic%20cup&image_size=square',
+    isOutOfStock: false,
+    specs: [
+      { name: '杯型', options: ['标准', '加大'], defaultOption: '标准' },
+      { name: '奶泡', options: ['厚奶泡', '标准奶泡'], defaultOption: '厚奶泡' },
+    ],
+  },
+  {
+    id: 'p-coffee-5',
+    brandId: 'coffee',
+    categoryId: 'coffee-4',
+    name: '耶加雪菲手冲',
+    description: '埃塞俄比亚精品豆，花香柑橘，清新明亮',
+    price: 48,
+    imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=pour%20over%20coffee%20yirgacheffe%20with%20glass%20carafe%20and%20coffee%20beans%20minimalist%20style&image_size=square',
+    isOutOfStock: false,
+    specs: [
+      { name: '份量', options: ['150ml', '200ml'], defaultOption: '200ml' },
+      { name: '温度', options: ['85°C', '90°C', '95°C'], defaultOption: '90°C' },
+    ],
+  },
+  {
+    id: 'p-coffee-6',
+    brandId: 'coffee',
+    categoryId: 'coffee-5',
+    name: '冰美式',
+    description: '清爽解渴，咖啡纯粹本味',
+    price: 25,
+    imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=iced%20americano%20coffee%20in%20clear%20glass%20with%20ice%20cubes%20summer%20refreshing&image_size=square',
+    isOutOfStock: false,
+    specs: [
+      { name: '杯型', options: ['中杯', '大杯'], defaultOption: '大杯' },
+    ],
+  },
+  {
+    id: 'p-bites-1',
+    brandId: 'bites',
+    categoryId: 'bites-1',
+    name: '凯撒鸡肉沙拉',
+    description: '鲜嫩鸡胸肉配罗马生菜，帕玛森芝士，经典凯撒酱',
+    price: 42,
+    imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=caesar%20salad%20with%20grilled%20chicken%20breast%20parmesan%20cheese%20croutons%20fresh%20lettuce%20in%20white%20bowl&image_size=square',
+    isOutOfStock: false,
+    specs: [
+      { name: '份量', options: ['标准份', '加大份'], defaultOption: '标准份' },
+      { name: '酱料', options: ['凯撒酱', '油醋汁', '低脂酸奶酱'], defaultOption: '凯撒酱' },
+    ],
+  },
+  {
+    id: 'p-bites-2',
+    brandId: 'bites',
+    categoryId: 'bites-2',
+    name: '牛油果鸡蛋三明治',
+    description: '新鲜牛油果配溏心蛋，全麦吐司，健康美味',
+    price: 35,
+    imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=avocado%20egg%20sandwich%20on%20whole%20grain%20bread%20with%20fresh%20greens%20on%20wooden%20cutting%20board&image_size=square',
+    isOutOfStock: false,
+    specs: [
+      { name: '面包', options: ['全麦吐司', '白吐司', '酸面包'], defaultOption: '全麦吐司' },
+      { name: '配菜', options: ['加薯条', '加沙拉', '无配菜'], defaultOption: '加沙拉' },
+    ],
+  },
+  {
+    id: 'p-bites-3',
+    brandId: 'bites',
+    categoryId: 'bites-3',
+    name: '罗勒青酱意面',
+    description: '新鲜罗勒制作青酱，搭配松子和帕玛森芝士',
+    price: 48,
+    originalPrice: 58,
+    imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=pesto%20pasta%20with%20fresh%20basil%20pine%20nuts%20parmesan%20cheese%20on%20white%20plate%20italian%20cuisine&image_size=square',
+    isOutOfStock: true,
+    specs: [
+      { name: '面型', options: ['意大利面', '螺旋面', '通心粉'], defaultOption: '意大利面' },
+      { name: '份量', options: ['标准份', '小份'], defaultOption: '标准份' },
+    ],
+  },
+  {
+    id: 'p-bites-4',
+    brandId: 'bites',
+    categoryId: 'bites-4',
+    name: '香煎三文鱼小食',
+    description: '挪威三文鱼，配柠檬和时蔬，高蛋白低脂',
+    price: 58,
+    imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=grilled%20salmon%20fillet%20with%20lemon%20wedge%20and%20asparagus%20on%20white%20plate%20gourmet%20healthy%20food&image_size=square',
+    isOutOfStock: false,
+    specs: [
+      { name: '熟度', options: ['三分熟', '五分熟', '七分熟'], defaultOption: '五分熟' },
+      { name: '配菜', options: ['时蔬', '藜麦', '土豆泥'], defaultOption: '时蔬' },
+    ],
+  },
+  {
+    id: 'p-bites-5',
+    brandId: 'bites',
+    categoryId: 'bites-5',
+    name: '夏威夷波奇碗',
+    description: '新鲜金枪鱼配牛油果、芒果、海苔，日式风味',
+    price: 52,
+    imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=hawaiian%20poke%20bowl%20with%20fresh%20tuna%20avocado%20mango%20rice%20seaweed%20healthy%20food%20trendy&image_size=square',
+    isOutOfStock: false,
+    specs: [
+      { name: '主料', options: ['金枪鱼', '三文鱼', '双拼'], defaultOption: '双拼' },
+      { name: '底饭', options: ['寿司米', '藜麦', '生菜底'], defaultOption: '寿司米' },
+    ],
+  },
+  {
+    id: 'p-bites-6',
+    brandId: 'bites',
+    categoryId: 'bites-6',
+    name: '羽衣甘蓝苹果汁',
+    description: '超级食物羽衣甘蓝搭配苹果，营养满满',
+    price: 28,
+    imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=green%20juice%20kale%20apple%20in%20glass%20with%20fresh%20fruits%20and%20vegetables%20healthy%20detox&image_size=square',
+    isOutOfStock: false,
+    specs: [
+      { name: '份量', options: ['350ml', '500ml'], defaultOption: '500ml' },
+      { name: '甜度', options: ['原味', '加蜂蜜'], defaultOption: '原味' },
+    ],
+  },
+  {
+    id: 'p-dessert-1',
+    brandId: 'dessert',
+    categoryId: 'dessert-1',
+    name: '经典提拉米苏',
+    description: '意式经典，马斯卡彭芝士搭配浓缩咖啡，层次丰富',
+    price: 38,
+    imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=tiramisu%20dessert%20in%20glass%20cup%20with%20cocoa%20powder%20italian%20dessert%20elegant%20presentation&image_size=square',
+    isOutOfStock: false,
+    specs: [
+      { name: '份量', options: ['单人份', '双人份'], defaultOption: '单人份' },
+    ],
+  },
+  {
+    id: 'p-dessert-2',
+    brandId: 'dessert',
+    categoryId: 'dessert-1',
+    name: '红丝绒蛋糕',
+    description: '湿润绵密的红丝绒蛋糕配奶油芝士糖霜',
+    price: 42,
+    originalPrice: 48,
+    imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=red%20velvet%20cake%20slice%20with%20cream%20cheese%20frosting%20on%20white%20plate%20beautiful%20dessert&image_size=square',
+    isOutOfStock: false,
+    specs: [
+      { name: '份量', options: ['单片', '6寸', '8寸'], defaultOption: '单片' },
+    ],
+  },
+  {
+    id: 'p-dessert-3',
+    brandId: 'dessert',
+    categoryId: 'dessert-2',
+    name: '法式马卡龙',
+    description: '巴黎风味，多种口味可选，外皮酥脆内馅柔滑',
+    price: 25,
+    imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=french%20macarons%20in%20pastel%20colors%20pink%20green%20yellow%20purple%20on%20elegant%20plate%20laduree%20style&image_size=square',
+    isOutOfStock: false,
+    specs: [
+      { name: '口味', options: ['草莓', '抹茶', '巧克力', '香草', '覆盆子', '混合'], defaultOption: '混合' },
+      { name: '数量', options: ['3个装', '6个装', '12个装'], defaultOption: '6个装' },
+    ],
+  },
+  {
+    id: 'p-dessert-4',
+    brandId: 'dessert',
+    categoryId: 'dessert-2',
+    name: '焦糖布蕾',
+    description: '经典法式甜点，焦糖脆皮配顺滑布丁',
+    price: 32,
+    imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=creme%20brulee%20with%20caramelized%20sugar%20top%20french%20dessert%20in%20ramekin%20with%20fresh%20berries&image_size=square',
+    isOutOfStock: true,
+    specs: [
+      { name: '份量', options: ['标准', '加大'], defaultOption: '标准' },
+    ],
+  },
+  {
+    id: 'p-dessert-5',
+    brandId: 'dessert',
+    categoryId: 'dessert-3',
+    name: '意式手工冰淇淋',
+    description: '每日新鲜制作，口感绵密，多种口味可选',
+    price: 30,
+    imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=artisan%20gelato%20ice%20cream%20in%20cup%20with%20multiple%20scoops%20chocolate%20vanilla%20strawberry%20italian%20style&image_size=square',
+    isOutOfStock: false,
+    specs: [
+      { name: '口味', options: ['香草', '巧克力', '草莓', '抹茶', '芒果', '开心果'], defaultOption: '香草' },
+      { name: '份量', options: ['单球', '双球', '三球'], defaultOption: '双球' },
+      { name: '容器', options: ['蛋筒', '纸杯'], defaultOption: '蛋筒' },
+    ],
+  },
+  {
+    id: 'p-dessert-6',
+    brandId: 'dessert',
+    categoryId: 'dessert-4',
+    name: '经典巧克力曲奇',
+    description: '比利时巧克力豆，外酥内软，香气扑鼻',
+    price: 18,
+    imageUrl: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chocolate%20chip%20cookies%20freshly%20baked%20with%20melted%20chocolate%20on%20baking%20paper%20warm%20cozy&image_size=square',
+    isOutOfStock: false,
+    specs: [
+      { name: '份量', options: ['2片装', '4片装', '6片装'], defaultOption: '4片装' },
+    ],
+  },
+];
+
+export const getProductsByBrand = (brandId: string): Product[] => {
+  return products.filter(p => p.brandId === brandId);
+};
+
+export const getProductsByCategory = (categoryId: string): Product[] => {
+  return products.filter(p => p.categoryId === categoryId);
+};
+
+export const getProductById = (id: string): Product | undefined => {
+  return products.find(p => p.id === id);
+};

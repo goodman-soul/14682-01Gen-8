@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Playfair+Display:wght@400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand-primary: #3E2723;
+  --brand-secondary: #D2691E;
+  --brand-background: #FAFAFA;
+  --brand-surface: #FFFFFF;
+  --brand-text: #212121;
+  --brand-text-secondary: #757575;
+  --brand-border: #E0E0E0;
+  font-family: 'Noto Sans SC', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.brand-coffee {
+  --brand-primary: #3E2723;
+  --brand-secondary: #D2691E;
+  --brand-background: #FFF8F0;
+  --brand-surface: #FFFFFF;
+  --brand-text: #3E2723;
+  --brand-text-secondary: #795548;
+  --brand-border: #D7CCC8;
+}
+
+.brand-bites {
+  --brand-primary: #4CAF50;
+  --brand-secondary: #FFC107;
+  --brand-background: #F1F8E9;
+  --brand-surface: #FFFFFF;
+  --brand-text: #1B5E20;
+  --brand-text-secondary: #689F38;
+  --brand-border: #C8E6C9;
+}
+
+.brand-dessert {
+  --brand-primary: #E91E63;
+  --brand-secondary: #9C27B0;
+  --brand-background: #FCE4EC;
+  --brand-surface: #FFFFFF;
+  --brand-text: #880E4F;
+  --brand-text-secondary: #C2185B;
+  --brand-border: #F8BBD0;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  transition: background-color 0.3s ease;
+}
+
+#root {
+  min-height: 100vh;
+  transition: background-color 0.3s ease;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-select {
+    user-select: none;
+  }
+}
