@@ -27,6 +27,7 @@ function App() {
         <Route path="/" element={<BrandSelect />} />
         <Route path="/brand/:brandId" element={<BrandHome />} />
         <Route path="/brand/:brandId/menu" element={<Menu />} />
+        <Route path="/brand/:brandId/coupons" element={<Coupons />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/coupons" element={<Coupons />} />
         <Route path="/pickup" element={<Pickup />} />

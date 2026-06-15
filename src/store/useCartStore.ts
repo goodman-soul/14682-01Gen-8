@@ -19,6 +19,7 @@ interface CartStore extends CartState {
   
   getBrandItems: (brandId: BrandId) => CartItem[];
   getBrandTotal: (brandId: BrandId) => number;
+  getApplicableBrandsTotal: (applicableBrandIds: BrandId[] | 'all') => number;
   getTotalItems: () => number;
   getTotalAmount: () => number;
   getDiscountedAmount: () => number;
@@ -39,6 +40,16 @@ export const useCartStore = create<CartStore>((set, get) => ({
 
   getBrandTotal: (brandId: BrandId) => {
     return get().getBrandItems(brandId).reduce((sum, item) => sum + item.unitPrice * item.quantity, 0);
+  },
+
+  getApplicableBrandsTotal: (applicableBrandIds: BrandId[] | 'all') => {
+    const { items } = get();
+    if (applicableBrandIds === 'all') {
+      return items.reduce((sum, item) => sum + item.unitPrice * item.quantity, 0);
+    }
+    return items
+      .filter(item => applicableBrandIds.includes(item.brandId))
+      .reduce((sum, item) => sum + item.unitPrice * item.quantity, 0);
   },
 
   getTotalItems: () => {

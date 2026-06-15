@@ -6,7 +6,7 @@ const navItems = [
   { path: '/brand/:brandId', icon: Home, label: '首页' },
   { path: '/brand/:brandId/menu', icon: Utensils, label: '菜单' },
   { path: '/cart', icon: ShoppingCart, label: '购物车' },
-  { path: '/coupons', icon: Ticket, label: '优惠券' },
+  { path: '/brand/:brandId/coupons', icon: Ticket, label: '优惠券' },
   { path: '/pickup', icon: QrCode, label: '取餐' },
 ];
 

@@ -3,6 +3,10 @@ import type { Order, OrderStatus } from '@/types';
 import { getBrandById } from '@/data/brands';
 import { formatPrice } from '@/utils/price';
 
+interface OrderCardProps {
+  order: Order;
+}
+
 const statusConfig: Record<OrderStatus, { text: string; color: string }> = {
   pending: { text: '等待接单', color: '#F59E0B' },
   preparing: { text: '制作中', color: '#3B82F6' },

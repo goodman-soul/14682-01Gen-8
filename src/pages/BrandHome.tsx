@@ -1,21 +1,46 @@
 import { useParams, useNavigate } from 'react-router-dom';
+import { useEffect, useMemo } from 'react';
 import { ChevronRight, Flame, Clock, Star } from 'lucide-react';
 import { Header } from '@/components/layout/Header';
 import { BottomNav } from '@/components/layout/BottomNav';
 import { ProductCard } from '@/components/menu/ProductCard';
-import { useCurrentBrand } from '@/store/useBrandStore';
+import { useBrandStore } from '@/store/useBrandStore';
+import { brands } from '@/data/brands';
 import { getProductsByBrand } from '@/data/products';
 import { getCategoriesByBrand } from '@/data/categories';
+import type { BrandId } from '@/types';
 
 export function BrandHome() {
   const { brandId } = useParams<{ brandId: string }>();
   const navigate = useNavigate();
-  const brand = useCurrentBrand();
-  const products = brandId ? getProductsByBrand(brandId) : [];
-  const categories = brandId ? getCategoriesByBrand(brandId) : [];
-  
-  const recommendedProducts = products.filter(p => !p.isOutOfStock).slice(0, 4);
-  const hotProducts = products.filter(p => !p.isOutOfStock).slice(2, 6);
+  const setCurrentBrand = useBrandStore(state => state.setCurrentBrand);
+  const brand = brands.find(b => b.id === brandId);
+
+  useEffect(() => {
+    if (brandId && brands.find(b => b.id === brandId)) {
+      setCurrentBrand(brandId as BrandId);
+    }
+  }, [brandId, setCurrentBrand]);
+
+  const products = useMemo(
+    () => (brandId ? getProductsByBrand(brandId) : []),
+    [brandId]
+  );
+
+  const categories = useMemo(
+    () => (brandId ? getCategoriesByBrand(brandId) : []),
+    [brandId]
+  );
+
+  const recommendedProducts = useMemo(
+    () => products.filter(p => !p.isOutOfStock).slice(0, 4),
+    [products]
+  );
+
+  const hotProducts = useMemo(
+    () => products.filter(p => !p.isOutOfStock).slice(2, 6),
+    [products]
+  );
 
   if (!brand) {
     return <div className="flex items-center justify-center min-h-screen">品牌不存在</div>;
@@ -24,19 +49,19 @@ export function BrandHome() {
   return (
     <div className="min-h-screen bg-brand-background pb-20">
       <Header showBack={false} />
-      
+
       <div className="max-w-lg mx-auto">
-        <div 
+        <div
           className="relative h-48 mx-4 mt-4 rounded-2xl overflow-hidden shadow-lg"
-          style={{ 
-            background: `linear-gradient(135deg, ${brand.theme.primary} 0%, ${brand.theme.secondary} 100%)` 
+          style={{
+            background: `linear-gradient(135deg, ${brand.theme.primary} 0%, ${brand.theme.secondary} 100%)`
           }}
         >
           <div className="absolute inset-0 opacity-10">
             <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-white" />
             <div className="absolute -bottom-10 -left-10 w-32 h-32 rounded-full bg-white" />
           </div>
-          
+
           <div className="relative h-full flex items-center justify-between p-6 text-white">
             <div>
               <span className="text-6xl mb-2 block">{brand.logoUrl}</span>
@@ -52,7 +77,7 @@ export function BrandHome() {
             </button>
           </div>
         </div>
-        
+
         <div className="flex justify-around px-4 py-6">
           {[
             { icon: Flame, label: '人气推荐', count: 12 },
@@ -60,7 +85,7 @@ export function BrandHome() {
             { icon: Star, label: '评分', count: '4.9' },
           ].map((item, idx) => (
             <div key={idx} className="text-center">
-              <div 
+              <div
                 className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-1"
                 style={{ backgroundColor: `${brand.theme.primary}15` }}
               >
@@ -71,35 +96,35 @@ export function BrandHome() {
             </div>
           ))}
         </div>
-        
+
         <div className="px-4">
           <div className="flex items-center justify-between mb-4">
             <h3 className="font-display text-xl font-bold text-brand-text flex items-center gap-2">
               <Flame size={20} className="text-orange-500" />
               人气推荐
             </h3>
-            <button 
+            <button
               onClick={() => navigate(`/brand/${brandId}/menu`)}
               className="text-sm text-brand-text-secondary flex items-center gap-1"
             >
               查看全部 <ChevronRight size={16} />
             </button>
           </div>
-          
+
           <div className="grid grid-cols-2 gap-3">
             {recommendedProducts.map(product => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
         </div>
-        
+
         <div className="px-4 mt-8">
           <div className="flex items-center justify-between mb-4">
             <h3 className="font-display text-xl font-bold text-brand-text">
               快速分类
             </h3>
           </div>
-          
+
           <div className="grid grid-cols-3 gap-3">
             {categories.slice(0, 6).map(category => (
               <button
@@ -115,14 +140,14 @@ export function BrandHome() {
             ))}
           </div>
         </div>
-        
+
         <div className="px-4 mt-8 mb-8">
           <div className="flex items-center justify-between mb-4">
             <h3 className="font-display text-xl font-bold text-brand-text">
               新品上市
             </h3>
           </div>
-          
+
           <div className="grid grid-cols-2 gap-3">
             {hotProducts.map(product => (
               <ProductCard key={product.id} product={product} />
@@ -130,7 +155,7 @@ export function BrandHome() {
           </div>
         </div>
       </div>
-      
+
       <BottomNav />
     </div>
   );

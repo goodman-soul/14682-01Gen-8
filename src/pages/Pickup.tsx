@@ -5,13 +5,15 @@ import { BottomNav } from '@/components/layout/BottomNav';
 import { PickupCodeCard } from '@/components/pickup/PickupCodeCard';
 import { OrderCard } from '@/components/pickup/OrderCard';
 import { useOrderStore } from '@/store/useOrderStore';
-import { useCurrentBrand } from '@/store/useBrandStore';
+import { useBrandStore } from '@/store/useBrandStore';
+import { brands } from '@/data/brands';
 import { useEffect, useState } from 'react';
+import type { BrandId } from '@/types';
 
 export function Pickup() {
   const location = useLocation();
-  const { brandId } = useParams<{ brandId: string }>();
-  const brand = useCurrentBrand();
+  const { brandId: routeBrandId } = useParams<{ brandId: string }>();
+  const storeBrandId = useBrandStore(state => state.currentBrandId);
   const { orders, getActivePickupCode, getOrdersByBrand } = useOrderStore();
   
   const [justOrdered, setJustOrdered] = useState(false);
@@ -26,7 +28,10 @@ export function Pickup() {
 
   const activeOrder = orders.find(o => o.status === 'ready' || o.status === 'preparing' || o.status === 'pending');
   const readyOrder = orders.find(o => o.status === 'ready');
-  const brandOrders = brandId ? getOrdersByBrand(brandId) : orders;
+  const validBrandId = routeBrandId && brands.find(b => b.id === routeBrandId)
+    ? routeBrandId as BrandId
+    : storeBrandId;
+  const brandOrders = validBrandId ? getOrdersByBrand(validBrandId) : orders;
   const historyOrders = orders.filter(o => o.status === 'completed');
 
   return (
